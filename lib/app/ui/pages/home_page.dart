@@ -37,15 +37,6 @@ class HomePage extends StatelessWidget {
             letterSpacing: 1.2,
           ),
         ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.logout),
-            onPressed: () async {
-              await Supabase.instance.client.auth.signOut();
-              Get.offAllNamed(Routes.LOGIN);
-            },
-          ),
-        ],
       ),
       body: Column(
         children: [
@@ -56,8 +47,8 @@ class HomePage extends StatelessWidget {
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                   colors: [
-                    Theme.of(context).colorScheme.background,
-                    Theme.of(context).colorScheme.background.withOpacity(0.8),
+                    Theme.of(context).colorScheme.surface,
+                    Theme.of(context).colorScheme.surface.withOpacity(0.8),
                   ],
                 ),
               ),

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'app/routes/app_pages.dart';
-import 'app/ui/pages/login_page.dart';
 import 'app/theme/app_theme.dart';
 import 'app/controllers/theme_controller.dart';
 import 'app/controllers/announcement_controller.dart';
@@ -31,7 +30,7 @@ class MyApp extends StatelessWidget {
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
       themeMode: ThemeMode.system,
-      home: const LoginPage(),
+      initialRoute: Routes.HOME,
       getPages: AppPages.routes,
     );
   }

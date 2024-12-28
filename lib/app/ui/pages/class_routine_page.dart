@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../controllers/routine_controller.dart';
-import 'add_routine_page.dart';
 
 class ClassRoutinePage extends StatelessWidget {
   const ClassRoutinePage({super.key});
@@ -154,93 +153,84 @@ class ClassRoutinePage extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
-                    child: InkWell(
-                      borderRadius: BorderRadius.circular(12),
-                      onLongPress: () => controller.deleteRoutine(routine.id),
-                      child: Padding(
-                        padding: const EdgeInsets.all(16),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              children: [
-                                Container(
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 12,
-                                    vertical: 6,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: theme.colorScheme.primaryContainer,
-                                    borderRadius: BorderRadius.circular(20),
-                                  ),
-                                  child: Text(
-                                    '${routine.startTime} - ${routine.endTime}',
-                                    style: TextStyle(
-                                      color: theme.colorScheme.onPrimaryContainer,
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(16),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              Container(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 12,
+                                  vertical: 6,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: theme.colorScheme.primaryContainer,
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                child: Text(
+                                  '${routine.startTime} - ${routine.endTime}',
+                                  style: TextStyle(
+                                    color: theme.colorScheme.onPrimaryContainer,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
-                                const Spacer(),
-                                IconButton(
-                                  icon: const Icon(Icons.delete_outline),
-                                  onPressed: () => controller.deleteRoutine(routine.id),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(height: 12),
-                            Text(
-                              routine.subject,
-                              style: theme.textTheme.titleLarge?.copyWith(
-                                fontWeight: FontWeight.bold,
                               ),
+                            ],
+                          ),
+                          const SizedBox(height: 12),
+                          Text(
+                            routine.subject,
+                            style: theme.textTheme.titleLarge?.copyWith(
+                              fontWeight: FontWeight.bold,
                             ),
-                            const SizedBox(height: 8),
-                            Row(
-                              children: [
-                                Icon(
-                                  Icons.person_outline,
-                                  size: 20,
-                                  color: theme.colorScheme.primary,
+                          ),
+                          const SizedBox(height: 8),
+                          Row(
+                            children: [
+                              Icon(
+                                Icons.person_outline,
+                                size: 20,
+                                color: theme.colorScheme.primary,
+                              ),
+                              const SizedBox(width: 8),
+                              Expanded(
+                                child: Text(
+                                  routine.teacher,
+                                  style: theme.textTheme.bodyLarge,
                                 ),
-                                const SizedBox(width: 8),
-                                Expanded(
-                                  child: Text(
-                                    routine.teacher,
-                                    style: theme.textTheme.bodyLarge,
-                                  ),
+                              ),
+                              Container(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 12,
+                                  vertical: 4,
                                 ),
-                                Container(
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 12,
-                                    vertical: 4,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: theme.colorScheme.surfaceVariant,
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Icon(
-                                        Icons.room_outlined,
-                                        size: 18,
-                                        color: theme.colorScheme.primary,
+                                decoration: BoxDecoration(
+                                  color: theme.colorScheme.surfaceContainerHighest,
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Icon(
+                                      Icons.room_outlined,
+                                      size: 18,
+                                      color: theme.colorScheme.primary,
+                                    ),
+                                    const SizedBox(width: 4),
+                                    Text(
+                                      routine.roomNo,
+                                      style: theme.textTheme.bodyMedium?.copyWith(
+                                        fontWeight: FontWeight.w500,
                                       ),
-                                      const SizedBox(width: 4),
-                                      Text(
-                                        routine.roomNo,
-                                        style: theme.textTheme.bodyMedium?.copyWith(
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
+                                    ),
+                                  ],
                                 ),
-                              ],
-                            ),
-                          ],
-                        ),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
                     ),
                   );
@@ -249,11 +239,6 @@ class ClassRoutinePage extends StatelessWidget {
             }),
           ),
         ],
-      ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () => Get.to(() => const AddRoutinePage()),
-        icon: const Icon(Icons.add),
-        label: const Text('Add Class'),
       ),
     );
   }

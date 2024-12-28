@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../controllers/instructor_controller.dart';
-import 'add_instructor_page.dart';
 
 class InstructorsPage extends StatelessWidget {
   const InstructorsPage({super.key});
@@ -84,34 +83,21 @@ class InstructorsPage extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Row(
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Expanded(
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        instructor.name,
-                                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                                              fontWeight: FontWeight.bold,
-                                            ),
+                                Text(
+                                  instructor.name,
+                                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                                        fontWeight: FontWeight.bold,
                                       ),
-                                      const SizedBox(height: 4),
-                                      Text(
-                                        instructor.position,
-                                        style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                                              color: Theme.of(context).colorScheme.primary,
-                                            ),
-                                      ),
-                                    ],
-                                  ),
                                 ),
-                                IconButton(
-                                  icon: const Icon(Icons.delete_outline),
-                                  onPressed: () => controller.deleteInstructor(
-                                    instructor.id,
-                                    instructor.imageUrl,
-                                  ),
+                                const SizedBox(height: 4),
+                                Text(
+                                  instructor.position,
+                                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                                        color: Theme.of(context).colorScheme.primary,
+                                      ),
                                 ),
                               ],
                             ),
@@ -159,10 +145,6 @@ class InstructorsPage extends StatelessWidget {
           },
         );
       }),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => Get.to(() => const AddInstructorPage()),
-        child: const Icon(Icons.add),
-      ),
     );
   }
 } 

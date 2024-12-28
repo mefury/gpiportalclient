@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import '../../controllers/event_controller.dart';
-import 'add_event_page.dart';
 
 class EventsPage extends StatelessWidget {
   const EventsPage({super.key});
@@ -75,24 +74,11 @@ class EventsPage extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Row(
-                          children: [
-                            Expanded(
-                              child: Text(
-                                event.title,
-                                style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                        Text(
+                          event.title,
+                          style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                                fontWeight: FontWeight.bold,
                               ),
-                            ),
-                            IconButton(
-                              icon: const Icon(Icons.delete_outline),
-                              onPressed: () => controller.deleteEvent(
-                                event.id,
-                                event.imageUrl,
-                              ),
-                            ),
-                          ],
                         ),
                         const SizedBox(height: 8),
                         Text(
@@ -131,10 +117,6 @@ class EventsPage extends StatelessWidget {
           },
         );
       }),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => Get.to(() => const AddEventPage()),
-        child: const Icon(Icons.add),
-      ),
     );
   }
 } 

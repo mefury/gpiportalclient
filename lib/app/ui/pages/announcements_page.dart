@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import '../../controllers/announcement_controller.dart';
-import 'add_announcement_page.dart';
 
 class AnnouncementsPage extends StatelessWidget {
   const AnnouncementsPage({super.key});
@@ -57,21 +56,11 @@ class AnnouncementsPage extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
-                      children: [
-                        Expanded(
-                          child: Text(
-                            announcement.title,
-                            style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                                  fontWeight: FontWeight.bold,
-                                ),
+                    Text(
+                      announcement.title,
+                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                            fontWeight: FontWeight.bold,
                           ),
-                        ),
-                        IconButton(
-                          icon: const Icon(Icons.delete_outline),
-                          onPressed: () => controller.deleteAnnouncement(announcement.id),
-                        ),
-                      ],
                     ),
                     const SizedBox(height: 8),
                     Text(
@@ -93,13 +82,6 @@ class AnnouncementsPage extends StatelessWidget {
           },
         );
       }),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => Get.to(
-          () => const AddAnnouncementPage(),
-          fullscreenDialog: true,
-        ),
-        child: const Icon(Icons.add),
-      ),
     );
   }
 } 
