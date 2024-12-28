@@ -53,11 +53,12 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               child: GridView.count(
-                crossAxisCount: size.width < 600 ? 2 : 3, // 3 columns for larger screens
+                shrinkWrap: true,
+                crossAxisCount: 2, // Always use 2 columns since we're in mobile width
                 padding: EdgeInsets.all(buttonPadding),
                 mainAxisSpacing: buttonPadding,
                 crossAxisSpacing: buttonPadding,
-                childAspectRatio: 1.1, // Make buttons slightly taller than wide
+                childAspectRatio: 1.1, // Keep the existing aspect ratio
                 children: [
                   _buildMenuButton(
                     context,
@@ -118,6 +119,7 @@ class HomePage extends StatelessWidget {
               ],
             ),
             child: Column(
+              mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
                   'Greenland Polytechnic Institute',
@@ -190,25 +192,26 @@ class HomePage extends StatelessWidget {
             ),
           ),
           child: Column(
+            mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                padding: EdgeInsets.all(isSmallScreen ? 12 : 14),
+                padding: EdgeInsets.all(isSmallScreen ? 8 : 10),
                 decoration: BoxDecoration(
                   color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Icon(
                   icon, 
-                  size: isSmallScreen ? 32 : 36,
+                  size: isSmallScreen ? 28 : 32,
                   color: Theme.of(context).colorScheme.primary,
                 ),
               ),
-              SizedBox(height: isSmallScreen ? 12 : 14),
+              SizedBox(height: isSmallScreen ? 8 : 10),
               Text(
                 label, 
                 style: TextStyle(
-                  fontSize: isSmallScreen ? 14 : 15,
+                  fontSize: isSmallScreen ? 13 : 14,
                   fontWeight: FontWeight.w600,
                   color: Theme.of(context).colorScheme.onSurface,
                   letterSpacing: 0.5,

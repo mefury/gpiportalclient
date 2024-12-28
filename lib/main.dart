@@ -9,13 +9,18 @@ import 'app/controllers/announcement_controller.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   
-  await Supabase.initialize(
-    url: 'http://supabasekong-rk0cg8o4088wk0wcccss4804.172.86.88.103.sslip.io',
-    anonKey: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzdXBhYmFzZSIsImlhdCI6MTczNTI5NDYyMCwiZXhwIjo0ODkwOTY4MjIwLCJyb2xlIjoiYW5vbiJ9.TeYaL1HzSnnhe83ziNqB-F17n5CKmsxzEhNIIn3oO90',
-  );
+  try {
+    await Supabase.initialize(
+      url: 'http://supabasekong-rk0cg8o4088wk0wcccss4804.172.86.88.103.sslip.io',
+      anonKey: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzdXBhYmFzZSIsImlhdCI6MTczNTI5NDYyMCwiZXhwIjo0ODkwOTY4MjIwLCJyb2xlIjoiYW5vbiJ9.TeYaL1HzSnnhe83ziNqB-F17n5CKmsxzEhNIIn3oO90',
+    );
+  } catch (e) {
+    debugPrint('Supabase initialization error: $e');
+  }
   
   Get.put(ThemeController());
   Get.put(AnnouncementController());
+  
   runApp(const MyApp());
 }
 
@@ -25,6 +30,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      builder: (context, child) {
+        return Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 700), // Changed from 450 to 700 for tablet width
+            child: child!,
+          ),
+        );
+      },
       debugShowCheckedModeBanner: false,
       title: 'GPI Portal',
       theme: AppTheme.lightTheme,
